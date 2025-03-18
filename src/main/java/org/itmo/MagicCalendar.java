@@ -68,6 +68,11 @@ public class MagicCalendar {
         try {
             final LocalTime parsedTime = LocalTime.parse(time);
             final List<Meeting> meetings = calendar.get(user);
+
+            if (meetings.size() >= 5) {
+                return false;
+            }
+
             final Meeting intersect = getIntersect(meetings, parsedTime);
 
             if (intersect != null) {
